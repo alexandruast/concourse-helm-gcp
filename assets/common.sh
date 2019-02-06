@@ -137,6 +137,10 @@ setup_repos() {
     username=$(echo $r | jq -r '.username // ""')
     password=$(echo $r | jq -r '.password // ""')
 
+    if [ -n "$service_account_json" ]; then
+      gcloud auth activate-service-account --key-file <( echo $service_account_json )
+    fi
+
     echo Installing helm repository $name $url
     if [[ -n "$username" && -n "$password" ]]; then
       helm repo add $name $url --tiller-namespace $tiller_namespace --username $username --password $password
