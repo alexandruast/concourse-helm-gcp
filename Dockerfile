@@ -11,9 +11,10 @@ WORKDIR /
 RUN apk add --update --no-cache ca-certificates git python jq bash curl tar gzip \
   && curl -sSL -o /usr/local/bin/kubectl "${KUBECTL_URL}" \
   && chmod +x /usr/local/bin/kubectl \
-  && curl -sSL "${GCLOUD_SDK_URL}" | tar zx -C /tmp \
-  && /tmp/google-cloud-sdk/install.sh -q >/dev/null 2>&1 \
-  && rm -fr /tmp/google-cloud-sdk \
+  && mkdir -p /opt \
+  && curl -sSL "${GCLOUD_SDK_URL}" | tar zx -C /opt \
+  && /opt/google-cloud-sdk/install.sh -q \
+  && gcloud config set disable_usage_reporting true \
   && curl -sSL "${HELM_URL}" | tar zx -C /tmp \
   && mv /tmp/linux-amd64/helm /bin/helm \
   && mkdir -p "$(helm home)/plugins" \
