@@ -94,7 +94,6 @@ resources:
     cluster_ca: _base64 encoded CA pem_
     admin_key: _base64 encoded key pem_
     admin_cert: _base64 encoded certificate pem_
-    service_account_json: ((service_account_json))
     repos:
       - name: some_repo
         url: https://somerepo.github.io/charts
