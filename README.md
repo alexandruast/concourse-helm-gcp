@@ -1,5 +1,7 @@
 # Helm Resource for Concourse
 
+Forked from <https://github.com/linkyard/concourse-helm-resource> and combined with <https://github.com/demilletech/docker-concourse-helm-gcp>
+
 Deploy to [Kubernetes Helm](https://github.com/kubernetes/helm) from [Concourse](https://concourse.ci/).
 
 ## Installing
@@ -11,7 +13,7 @@ resource_types:
 - name: helm
   type: docker-image
   source:
-    repository: linkyard/concourse-helm-resource
+    repository: alexandruast/concourse-helm-gcp
 ```
 
 ## Source Configuration
