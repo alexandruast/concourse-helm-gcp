@@ -16,7 +16,7 @@ RUN apk add --update --no-cache ca-certificates git python jq bash curl tar gzip
   && /opt/google-cloud-sdk/install.sh -q \
   && gcloud config set disable_usage_reporting true \
   && curl -sSL "${HELM_URL}" | tar zx -C /tmp \
-  && mv /tmp/linux-amd64/helm /bin/helm \
+  && mv /tmp/linux-amd64/helm /usr/local/bin/helm \
   && mkdir -p "$(helm home)/plugins" \
   && helm plugin install https://github.com/viglesiasce/helm-gcs.git >/dev/null 2>&1 \
   && helm plugin install https://github.com/databus23/helm-diff >/dev/null 2>&1 \
